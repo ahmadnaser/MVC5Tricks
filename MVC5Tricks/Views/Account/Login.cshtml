@@ -4,6 +4,15 @@
     ViewBag.Title = "Log in";
 }
 
+@{var urlHelper = new UrlHelper(Html.ViewContext.RequestContext);
+string baseurl = urlHelper.Content("~"); }
+
+<a href="@(baseurl)">Click Here To Go1</a>
+<a href="@Request.Url.FormatAbsoluteUrl("/")">Click Here To Go2</a>
+<img src="@Request.Url.FormatAbsoluteUrl("Content/profile-pic.png")" />
+
+<a href="@Session["baseurl"]">Click Here To Go3</a>
+<a href="@MVC5Tricks.App.BaseUrl">Click Here To Go4</a>
 <h2>@ViewBag.Title.</h2>
 <div class="row">
     <div class="col-md-8">

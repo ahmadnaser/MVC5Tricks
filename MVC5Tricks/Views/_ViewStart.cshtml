@@ -1,3 +1,8 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var baseurl = Request.Url.GetLeftPart(UriPartial.Authority);
+    if (Session["baseurl"] == null)
+    {
+        Session["baseurl"] = baseurl;
+    }
 }
