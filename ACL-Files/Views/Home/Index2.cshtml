@@ -1,0 +1,75 @@
+﻿@using AhmadNaserCollector.Managers
+@using AhmadNaserCollector.Models
+@model AhmadNaserCollector.Models.Student
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index2", "Home", FormMethod.Post, new { id = "addForm" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        @if (ValidationManager.Validators["Student"]["Name"].Visible)
+        {
+            <div>
+                <div class="formLabel">
+                    @Html.LabelFor(e => e.Name, "Name")
+                </div>
+                <div class="formInputField">
+                    @Html.TextBoxFor(e => e.Name)
+                    <span class="formRequiredField">
+                        @if (ValidationManager.Validators["Student"]["Name"].Required)
+                        { <text>*</text> }
+                        else
+                        { <text>&nbsp;</text> }
+                    </span>
+                    @Html.ValidationMessageFor(e => e.Name)
+                </div>
+            </div>
+            <div class="formInputLine"></div>
+        }
+
+
+
+        @if (ValidationManager.Validators["Student"]["Address"].Visible)
+        {
+            <div>
+                <div class="formLabel">
+                    @Html.LabelFor(e => e.Address, "Address")
+                </div>
+                <div class="formInputField">
+                    @Html.TextBoxFor(e => e.Address)
+                    <span class="formRequiredField">
+                        @if (ValidationManager.Validators["Student"]["Address"].Required)
+                        { <text>*</text> }
+                        else
+                        { <text>&nbsp;</text> }
+                    </span>
+                    @Html.ValidationMessageFor(e => e.Address)
+                </div>
+            </div>
+            <div class="formInputLine"></div>
+        }
+
+
+
+
+    </div>
+    
+    <div style="padding: 20px 0 0 0;">
+    <div class="formLabel">&nbsp;</div>
+    <div class="formInputField">
+        <input type="submit" title="Add Creep" value="Add Creep" id="btnAdd" />
+    </div>
+</div>
+<div style="clear: both;"></div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index2")
+</div>

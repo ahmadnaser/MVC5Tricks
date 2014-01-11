@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AhmadNaserCollector.Managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,10 @@ namespace MVC5Tricks
     {
         protected void Application_Start()
         {
+                 // Add our custom model validator provider.
+            ModelValidatorProviders.Providers.Add(new
+                                    ExtendedDataAnnotationsModelValidatorProvider());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
